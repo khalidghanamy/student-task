@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StorefrontController;
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\LogouttController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +31,4 @@ Route::put('/students/{student}', [StudentController::class, 'update'])->name('s
 Route::delete('/students/{student}', [StudentController::class, 'destroy'])->name('students.destroy');
 Route::post('/students/storefront', [StorefrontController::class, 'store'])->name('students.storefront');
 Route::get('/students/create', [StorefrontController::class, 'create'])->name('students.create');
-Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+Route::post('/logout', [LogouttController::class, 'logout'])->name('logout');
