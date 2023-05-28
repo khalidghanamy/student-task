@@ -58,19 +58,19 @@
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="http://127.0.0.1:8000/login">
+                                {{-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="http://127.0.0.1:8000/login"> --}}
                                        {{-- onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }} --}}
-                                        Logout
-                                    </a>
+                                        {{-- Logout
+                                    </a> --}}
 
                                     {{-- <form id="logout-form" action="http://127.0.0.1:8000/logout" method="POST" class="d-none">
                                         @csrf
                                     </form> --}}
-                                </div>
-                            </li>
+                                {{-- </div> --}}
+                             </li>
                         @endguest
                     </ul>
                 </div>
