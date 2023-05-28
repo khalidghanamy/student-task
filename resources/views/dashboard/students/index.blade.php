@@ -3,6 +3,7 @@
 
 @section('content')
     <div class="container">
+
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class=" mt-4 mb-2">
@@ -33,13 +34,85 @@
             </div>
         </div>
     </div>
+    <div class="container w-75 ">
+        <div class="row justify-content-center">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+    </div>
 
-    <!-- Button to redirect to student storefront -->
-    <canvas id="studentChart" width="400" height="400"></canvas>
-    @endsection
-
-
-
-@section('scripts')
-   {{-- use scriot here for charts --}}
 @endsection
+
+@push('js')
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const ctx = document.getElementById('myChart').
+        getContext('2d');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {!! json_encode($students->pluck('name')) !!},
+                datasets: [{
+                    label: 'Student Grade',
+                    data: {!! json_encode($students->pluck('grade')) !!},
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                 scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+            },
+        });
+        });
+        // setInterval(() => {
+        //   const ctx = document.getElementById('myChart').
+        // getContext('2d');
+
+        // new Chart(ctx, {
+        //     type: 'bar',
+        //     data: {
+        //         labels: {!! json_encode($students->pluck('name')) !!},
+        //         datasets: [{
+        //             label: 'Student Grade',
+        //             data: {!! json_encode($students->pluck('grade')) !!},
+        //             backgroundColor: [
+        //                 'rgba(255, 99, 132, 0.2)',
+        //                 'rgba(54, 162, 235, 0.2)',
+        //             ],
+        //             borderColor: [
+        //                 'rgba(255, 99, 132, 1)',
+        //                 'rgba(54, 162, 235, 1)',
+        //             ],
+        //             borderWidth: 1
+        //         }]
+        //     },
+        //     options: {
+        //         animation: false,
+        //         plugins: {
+        //             legend: {
+        //                 display: false
+        //             },
+        //             tooltip: {
+        //                 enabled: false
+        //             }
+        //         }
+        //     },
+        // });
+
+        // },300);
+    </script>
+@endpush

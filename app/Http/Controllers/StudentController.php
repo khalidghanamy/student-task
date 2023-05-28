@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Charts\StudentsChart;
 
 class StudentController extends Controller
 {
     public function index()
     {
         $students = Student::all();
-        return view('dashboard.students.index', compact('students'));
+        $chart = new StudentsChart($students);
+        $chartHtml = $chart->render();
+        //print data
+        // dd($chartHtml);
+        return view('dashboard.students.index', compact('students', 'chartHtml'));
     }
 
     public function create()
